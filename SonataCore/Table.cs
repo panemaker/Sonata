@@ -11,6 +11,7 @@ namespace Sonata
 
     public class Table : ITable
     {
+        public static int INVALID_INDEX = -1;
         public string Source { get; set; } = "";
 
         protected List<string> Headers = [];
@@ -20,7 +21,7 @@ namespace Sonata
         {
             Regex rx = new Regex(regexString, RegexOptions.IgnoreCase);
             string? header = Headers.FirstOrDefault(h => rx.IsMatch(h));
-            return !string.IsNullOrEmpty(header) ? Headers.IndexOf(header) : -1;
+            return !string.IsNullOrEmpty(header) ? Headers.IndexOf(header) : INVALID_INDEX;
         }
 
         public void AddRow(string[] rowValues)

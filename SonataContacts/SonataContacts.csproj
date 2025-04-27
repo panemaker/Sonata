@@ -5,9 +5,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>Sonata.Program</StartupObject>
-    <PublishTrimmed>True</PublishTrimmed>
-    <PublishAot>False</PublishAot>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SonataCore\SonataCore.csproj" />
+  </ItemGroup>
 
 </Project>
