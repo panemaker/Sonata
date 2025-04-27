@@ -5,9 +5,12 @@ namespace Sonata
     public class PathRepository
     {
         private string AppDirectory = "";
-        public string DatabasePath { get; private set; } = "";
-        public List<string> ReportPaths { get; private set; } = new List<string>();
-        public string ResultsPath { get; private set; } = "";
+        public string DatabasePath { get; private set; } = "D:\\Projects\\Sonata\\Соната - Идеални Части.csv";
+        public List<string> ReportPaths { get; private set; } = new List<string>() 
+        {
+            "D:\\Projects\\Sonata\\Соната - Google Forms.csv"
+        };
+        public string ResultsPath { get; private set; } = "D:\\Projects\\Sonata\\Соната - Results.csv";
 
         public PathRepository() 
         {
@@ -27,6 +30,9 @@ namespace Sonata
 
         private void FetchDatabasePath()
         {
+            if (!string.IsNullOrEmpty(DatabasePath))
+                return;
+
             string? path = null;
             while (string.IsNullOrEmpty(path))
             {
@@ -37,6 +43,9 @@ namespace Sonata
 
         private void FetchReportPaths()
         {
+            if (ReportPaths.Count > 0)
+                return;
+
             string? path;
             while (true)
             {
@@ -61,6 +70,9 @@ namespace Sonata
 
         private void FetchResultsPath()
         {
+            if (!string.IsNullOrEmpty(ResultsPath))
+                return;
+
             string? path = null;
             while (string.IsNullOrEmpty(path))
             {

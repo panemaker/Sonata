@@ -27,6 +27,8 @@
             string results = votesCounter.ToString();
             Console.WriteLine(results);
             FileUtils.WriteTable(pathRepository.ResultsPath, results);
+
+            Console.ReadKey();
         }
     }
 }

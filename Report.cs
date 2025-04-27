@@ -28,7 +28,7 @@ namespace Sonata
             List<int> questionIndices = new List<int>();
             foreach (string header in Headers)
             {
-                Regex reverseRx = new Regex("username|mail|apartment|обект|timestamp", RegexOptions.IgnoreCase);
+                Regex reverseRx = new Regex("username|mail|apartment|обект|timestamp|име", RegexOptions.IgnoreCase);
                 if (reverseRx.IsMatch(header))
                 {
                     continue;

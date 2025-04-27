@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Principal;
+using System.Text;
 
 namespace Sonata
 {
@@ -47,6 +48,22 @@ namespace Sonata
                 TryCreateQuestionResult(question);
             }
 
+            foreach (var vote in report.Votes)
+            {
+                bool hasAccount = db.Accounts.Exists(a =>
+                {
+                    if (!string.IsNullOrEmpty(vote.Email))
+                        return a.Emails.Contains(vote.Email);
+                    else if (!string.IsNullOrEmpty(vote.Apartment))
+                        return a.Apartment.Contains(vote.Apartment);
+                    else
+                        return false;
+                });
+                if (!hasAccount)
+                {
+                    Console.WriteLine($"{vote.Email} не е в базата данни.");
+                }
+            }
             foreach (var vote in report.Votes)
             {
                 foreach (var account in report.GetAssociatedAccounts(vote, db))
